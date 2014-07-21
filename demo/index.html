@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Downsize.js</title>
+    <link rel="stylesheet" href="./assets/normalize.css" />
+    <link rel="stylesheet" href="./assets/main.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <style>
+      /* begin demo embedded styles */
+      .navbar {
+        margin-bottom: 0px;
+        background: #eee;
+        border-bottom: 1px solid #ccc;
+      }
+      .jumbotron {
+        padding-top: 0px;
+        border-top: 1px solid #fff;
+      }
+      #table {
+        width: 100%;
+      }
+      #table td, #table th {
+        text-align: center;
+      }
+      /* end demo embedded styles */
+    </style>
+  </head>
+  <body>
+ <div class="navbar" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Downsize.js</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Examples</a></li>
+            <li><a href="#contact">Get Started</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Downsize.js</h1>
+        <p>This library is for quick and easy image downsizing with sudo antialiasing</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more »</a></p>
+      </div>
+    </div> 
+
+    <!-- begin demo markup -->
+
+    <table id="table">
+      <tr>
+        <th> 4 steps </th>
+        <th> 2 steps </th>
+        <th> no downsize </th>
+      </tr>
+    </table>
+    <!-- end demo markup -->
+
+    <p>See the <a href="http://KamranAsif.github.io/canvasResize">project homepage</a>.
+    <p>Check out the <a href="https://github.com/KamranAsif/canvasResize">project repo</a>.
+    <p>Copyright 2014 Kamran Asif</p>
+
+    <script src="./../dist/downsize.js"></script>
+
+    <script>
+      /* begin demo script */
+
+      "use strict";
+
+      var images = [
+      {
+        src : "assets/img1.jpg",
+        size : 0.320
+      },
+      {
+        src : "assets/img2.jpg",
+        size : 0.0853
+      },
+      {
+        src : "assets/img3.jpg",
+        size : 0.10785
+      },
+      {
+        src : "assets/img4.jpg",
+        size : 0.2
+      },
+      {
+        src : "assets/img5.jpg",
+        size : 0.2
+      },
+      {
+        src : "assets/img6.jpg",
+        size : 0.079
+      },
+      ];
+
+      var table = document.getElementById("table");
+
+      for(var i = 0; i < images.length; i++) {
+        var tr = document.createElement("tr");
+        tr.id = "image"+i;
+        table.appendChild(tr);
+
+        var downsizedCanvas1 = new downsize({
+          src : images[i].src,
+          steps : 4,
+          size: images[i].size
+        });
+
+        var td1 = document.createElement("td");
+        td1.appendChild(downsizedCanvas1);
+        document.getElementById("image"+i).appendChild(td1);
+
+        var downsizedCanvas2 = new downsize({
+          src : images[i].src,
+          steps : 2,
+          size: images[i].size
+        });
+
+        var td2 = document.createElement("td");
+        td2.appendChild(downsizedCanvas2);
+        document.getElementById("image"+i).appendChild(td2);
+
+
+        var imageObj = new Image();
+        imageObj.onload = (function(id) { 
+          return function() {
+            var canvas = document.createElement("canvas");
+            var ctx = canvas.getContext('2d');
+
+            var td3 = document.createElement("td");
+            td3.appendChild(canvas);
+            document.getElementById("image"+id).appendChild(td3);
+
+            var width = this.width*images[id].size;
+            var height = this.height*images[id].size;
+
+            canvas.height = height;
+            canvas.width = width;
+
+            ctx.drawImage(this, 0, 0, width, height);
+          }
+        }(i));
+        imageObj.src = images[i].src;
+      }
+
+
+
+      /* end demo script */
+    </script>
+  </body>
+</html>

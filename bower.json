@@ -1,0 +1,12 @@
+{
+  "name": "downsize.js",
+  "version": "0.0.0",
+  "main": "dist/downsize.min.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {}
+}
