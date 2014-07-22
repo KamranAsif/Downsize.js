@@ -14,7 +14,7 @@ function Downsize(options) {
   this.canvas = options.canvas || document.createElement('canvas');
   this.ctx = this.canvas.getContext('2d');
   this.src = options.src;
-  this.steps = options.steps || 4;
+  this.steps = (options.steps+1) || 4;
   this.size = options.size || 0.5;
   this.stepSize = Math.pow(this.size, 1/this.steps);
 
@@ -31,7 +31,7 @@ Downsize.prototype.createImage = function(src) {
     tempCanvas.width = image.width;
     tempCanvas.height = image.height;
     tempCtx.drawImage(image, 0, 0, image.width, image.height);
-    this.steps--;
+    //this.steps--;
     this.downSample(tempCanvas);
   }.bind(this);
   image.src = src;
