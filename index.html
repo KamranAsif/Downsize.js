@@ -1,14 +1,177 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>downsize.js | Downsize images using canvas</title>
-    <link rel="stylesheet" href="./demo/assets/normalize.css">
+    <title>Downsize.js</title>
+    <link rel="stylesheet" href="demo/assets/normalize.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="demo/assets/main.css" />
   </head>
   <body>
-    <h1>downsize.js</h1>
-    <p>Downsize images using canvas</p>
-    <p>Check out the <a href="http://KamranAsif.github.io/downsize.js/demo/index.html">project homepage</a>.</p>
-    <p>Check out the <a href="https://github.com/KamranAsif/downsize.js">source code on GitHub</a>.</p>
-    <p>Copyright 2014 Karman Asif</p>
-  </body>
-</html>
+    <a href="http://KamranAsif.github.io/canvasResize"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1000" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+    <div class="navbar" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Downsize.js</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Overview</a></li>
+            <li><a href="demo/index.html">Examples</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Downsize.js</h1>
+        <p>This library is for quick and easy image downsizing with sudo antialiasing</p>
+        <p>
+        <a href="https://github.com/KamranAsif/downsize.js/archive/master.zip" class="btn btn-primary btn-lg" role="button">Download</a>
+        <a href="demo/index.html" class="btn btn-default btn-lg" role="button">View examples</a>
+        </p>
+      </div>
+    </div> 
+    <div class="buttons">
+      <ul class="follows">
+        <li>
+        <iframe src="http://ghbtns.com/github-btn.html?user=kamranasif&repo=github-downsize.js&type=watch&count=true"
+          allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </li>
+        <li>
+        <iframe src="http://ghbtns.com/github-btn.html?user=kamranasif&repo=github-ownsize.js&type=fork&count=true"
+          allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+        </li>
+        <li>
+        <iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/follow_button.1404859412.html#_=1405915278279&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=_KamranAsif&amp;show_count=true&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 243px; height: 20px;"></iframe> 
+        </li>
+        <ul>
+        </div> 
+
+        <!-- begin demo markup -->
+
+        <div>
+          <div class="row">
+
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <canvas id="downsized4"></canvas>
+                <div class="caption">
+                  <h3>Downsized with 4 steps</h3>
+                  <p>Good smoothing, can blur image<p>
+                  <pre>
+var canvas = document.getElementById("..");
+Downsize({
+  canvas: canvas,
+  src : "demo/assets/img1.jpg",
+  steps : 4,
+  size: 0.25
+});</pre>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                  <canvas id="downsized2"></canvas>
+                  <div class="caption">
+                    <h3>Downsized with 2 steps</h3>
+                    <p>Moderate gains, 2 passes</p>
+                    <pre>
+var canvas = document.getElementById("..");
+Downsize({
+  canvas: canvas,
+  src : "demo/assets/img1.jpg",
+  steps : 2,
+  size: 0.25
+});</pre>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                  <div class="thumbnail">
+                    <canvas id="downsized0"></canvas>
+                    <div class="caption">
+                      <h3>Downsized with 0 steps</h3>
+                      <p>Effective to not using Downsize.js</p>
+                      <pre>
+var canvas = document.getElementById("..");
+Downsize({
+  canvas: canvas,
+  src : "demo/assets/img1.jpg",
+  steps : o,
+  size: 0.25
+});</pre>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container">
+                <div class="row marketing">
+                  <div class="col-lg-6">
+                    <h4>Downsizes is easy to use!</h4>
+                    <p>Simply pass a canvas element or Downsize.js will return a new canvas element.</p>
+
+                    <h4>Resize your image in steps</h4>
+                    <p>Resizing an image down directly from 100% can cause graphical glitches. Downsize.js does multiple interpolations with fewer pixels per step to make images smoother</p>
+
+                  </div>
+
+                  <div class="col-lg-6">
+                    <h4>Downsize.js is easy to use!</h4>
+                    <p>Simply pass a canvas element or Downsize.js will return a new canvas element.</p>
+                    <h4>Development</h4>
+                    <p>Downsize.js is still in development. Future releases will include dynamic resizing and setting a max height/width.</p>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- end demo markup -->
+              <script src="dist/downsize.js"></script>
+
+              <script>
+                /* begin demo script */
+
+                "use strict";
+
+                var src = "demo/assets/img1.jpg";
+                var size = 0.23;
+                Downsize({
+                  canvas: document.getElementById("downsized4"),
+                  src : src,
+                  steps : 4,
+                  size: size
+                });
+
+                Downsize({
+                canvas: document.getElementById("downsized2"),
+                src : src,
+                steps : 2,
+                size: size 
+                });
+
+                Downsize({
+                canvas: document.getElementById("downsized0"),
+                src : src,
+                steps : 0,
+                size: size
+                });
+                /* end demo script */
+              </script>
+            </body>
+          </html>

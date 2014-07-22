@@ -29,10 +29,6 @@ module.exports = function(grunt) {
       }
     },
 
-    qunit: {
-      files: ['test/*.html']
-    },
-
     jshint: {
       files: ['dist/downsize.js'],
       options: {
