@@ -4,7 +4,7 @@ Downsize images using canvas
 
 ## About
 
-A JavaScript library by Karman Asif.
+A JavaScript library by Kamran Asif.
 
 See the [project homepage](http://KamranAsif.github.io/downsize.js).
 
@@ -20,7 +20,11 @@ Or grab the [source](https://github.com/KamranAsif/downsize.js/dist/downsize.js)
 
 Basic usage is as follows:
 
-    downsize();
+    var downsize = new Downsize({
+        src : 'images/image.png',
+        steps : 2,
+        size: 0.5
+    });
 
 For advanced usage, see the documentation.
 
